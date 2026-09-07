@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Countdown 🎂</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --pink:#ff4fa3;
+    --purple:#9b5cff;
+    --gold:#ffd166;
+    --dark:#080511;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at 15% 15%,rgba(255,79,163,.18),transparent 30%),
+        radial-gradient(circle at 85% 25%,rgba(155,92,255,.18),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(255,209,102,.08),transparent 35%),
+        var(--dark);
+    color:#fff;
+    font-family:'Montserrat',sans-serif;
+}
+
+/* =========================
+   SPARKLES
+========================= */
+
+#sparkles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.sparkle{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 0 10px #fff,0 0 20px var(--pink);
+    animation:twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.1;
+        transform:scale(.5);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 0;
+}
+
+.card{
+    width:100%;
+    padding:50px 25px;
+    text-align:center;
+    border-radius:35px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.035);
+    backdrop-filter:blur(20px);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.5),
+        inset 0 0 40px rgba(255,255,255,.02);
+}
+
+/* =========================
+   TITLES
+========================= */
+
+.small-title{
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(35px,7vw,75px);
+    line-height:1.08;
+    margin-bottom:15px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ff9dd1,
+            #b88aff,
+            #ffd166,
+            #fff
+        );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+    animation:gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove{
+    from{
+        background-position:0%;
+    }
+
+    to{
+        background-position:300%;
+    }
+}
+
+.subtitle{
+    color:#c9c4d4;
+    font-size:15px;
+    margin-bottom:30px;
+}
+
+/* =========================
+   PANDA SECTION
+========================= */
+
+.panda-area{
+    position:relative;
+    width:250px;
+    height:230px;
+    margin:0 auto 35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Glow behind panda */
+
+.panda-glow{
+    position:absolute;
+    width:190px;
+    height:190px;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,79,163,.28),
+            rgba(155,92,255,.15),
+            transparent 70%
+        );
+    filter:blur(10px);
+}
+
+/* Panda */
+
+.panda{
+    position:relative;
+    width:150px;
+    height:150px;
+    z-index:2;
+    animation:pandaFloat 3s ease-in-out infinite;
+}
+
+@keyframes pandaFloat{
+    0%,100%{
+        transform:translateY(0) rotate(-2deg);
+    }
+
+    50%{
+        transform:translateY(-9px) rotate(2deg);
+    }
+}
+
+/* Ears */
+
+.ear{
+    position:absolute;
+    width:47px;
+    height:47px;
+    border-radius:50%;
+    background:#111;
+    top:0;
+}
+
+.ear.left{
+    left:8px;
+}
+
+.ear.right{
+    right:8px;
+}
+
+/* Head */
+
+.head{
+    position:absolute;
+    width:125px;
+    height:115px;
+    left:12px;
+    top:20px;
+    background:#fff;
+    border-radius:50% 50% 45% 45%;
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.3);
+}
+
+/* Eye patches */
+
+.eye-patch{
+    position:absolute;
+    width:40px;
+    height:48px;
+    background:#111;
+    border-radius:50%;
+    top:32px;
+}
+
+.eye-patch.left{
+    left:17px;
+    transform:rotate(28deg);
+}
+
+.eye-patch.right{
+    right:17px;
+    transform:rotate(-28deg);
+}
+
+/* Eyes */
+
+.eye{
+    position:absolute;
+    width:10px;
+    height:13px;
+    background:#fff;
+    border-radius:50%;
+    top:49px;
+    z-index:2;
+}
+
+.eye.left{
+    left:34px;
+}
+
+.eye.right{
+    right:34px;
+}
+
+.eye::after{
+    content:"";
+    position:absolute;
+    width:5px;
+    height:7px;
+    background:#000;
+    border-radius:50%;
+    top:3px;
+    left:3px;
+}
+
+/* Nose */
+
+.nose{
+    position:absolute;
+    width:18px;
+    height:13px;
+    border-radius:50%;
+    background:#111;
+    left:54px;
+    top:70px;
+}
+
+/* Mouth */
+
+.mouth{
+    position:absolute;
+    width:24px;
+    height:12px;
+    left:51px;
+    top:80px;
+    border-bottom:3px solid #111;
+    border-radius:50%;
+}
+
+/* Body */
+
+.body{
+    position:absolute;
+    width:105px;
+    height:70px;
+    background:#111;
+    left:23px;
+    top:113px;
+    border-radius:50% 50% 40% 40%;
+}
+
+/* White belly */
+
+.belly{
+    position:absolute;
+    width:65px;
+    height:48px;
+    background:#fff;
+    border-radius:50%;
+    left:20px;
+    top:11px;
+}
+
+/* Arms */
+
+.arm{
+    position:absolute;
+    width:30px;
+    height:55px;
+    background:#111;
+    border-radius:30px;
+    top:122px;
+    z-index:3;
+}
+
+.arm.left{
+    left:8px;
+    transform:rotate(35deg);
+}
+
+.arm.right{
+    right:8px;
+    transform:rotate(-35deg);
+}
+
+/* Cake */
+
+.cake{
+    position:absolute;
+    width:70px;
+    height:42px;
+    background:linear-gradient(135deg,#ff70b8,#9b5cff);
+    border-radius:8px 8px 12px 12px;
+    left:40px;
+    top:102px;
+    z-index:4;
+    box-shadow:0 0 20px rgba(255,79,163,.5);
+}
+
+.cake::before{
+    content:"";
+    position:absolute;
+    width:80px;
+    height:12px;
+    left:-5px;
+    top:-5px;
+    border-radius:50%;
+    background:#ffd166;
+}
+
+.candle{
+    position:absolute;
+    width:7px;
+    height:23px;
+    background:#fff;
+    left:32px;
+    top:-26px;
+    border-radius:5px;
+}
+
+.flame{
+    position:absolute;
+    width:10px;
+    height:15px;
+    background:#ffd166;
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    left:30px;
+    top:-40px;
+    box-shadow:0 0 15px #ffd166;
+    animation:flame 1s infinite alternate;
+}
+
+@keyframes flame{
+    from{
+        transform:rotate(-45deg) scale(.8);
+    }
+
+    to{
+        transform:rotate(-45deg) scale(1.1);
+    }
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    max-width:850px;
+    margin:auto;
+}
+
+.time-box{
+    padding:25px 10px;
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,79,163,.12),
+            rgba(155,92,255,.09)
+        );
+
+    border:1px solid rgba(255,255,255,.1);
+
+    box-shadow:
+        0 0 25px rgba(255,79,163,.08),
+        inset 0 0 25px rgba(155,92,255,.04);
+}
+
+.number{
+    display:block;
+    font-size:clamp(35px,7vw,65px);
+    font-weight:800;
+    line-height:1;
+
+    text-shadow:
+        0 0 8px var(--pink),
+        0 0 25px rgba(255,79,163,.5);
+}
+
+.label{
+    display:block;
+    margin-top:12px;
+    color:#bdb6c9;
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+/* =========================
+   WISH
+========================= */
+
+.wish{
+    max-width:750px;
+    margin:45px auto 0;
+    padding:30px;
+    border-radius:25px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.wish-title{
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+.wish p{
+    color:#ded9e5;
+    line-height:1.9;
+    font-size:15px;
+}
+
+/* =========================
+   BIRTHDAY MODE
+========================= */
+
+.birthday{
+    display:none;
+}
+
+.birthday.active{
+    display:block;
+}
+
+.before.hidden{
+    display:none;
+}
+
+.birthday-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(40px,9vw,90px);
+    line-height:1;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff6eb5,
+            #fff,
+            #ffd166,
+            #b47cff,
+            #ff6eb5
+        );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+    animation:
+        gradientMove 4s linear infinite,
+        heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+    50%{
+        transform:scale(1.04);
+    }
+}
+
+.birthday-sub{
+    margin-top:25px;
+    color:#ddd5e5;
+    font-size:17px;
+}
+
+/* =========================
+   BALLOONS
+========================= */
+
+.balloon{
+    position:fixed;
+    bottom:-150px;
+    width:55px;
+    height:70px;
+    border-radius:50% 50% 45% 45%;
+    z-index:5;
+    animation:balloonFloat linear forwards;
+}
+
+.balloon::after{
+    content:"";
+    position:absolute;
+    width:1px;
+    height:120px;
+    background:rgba(255,255,255,.4);
+    top:68px;
+    left:50%;
+}
+
+@keyframes balloonFloat{
+    from{
+        transform:translateY(0) rotate(-5deg);
+    }
+
+    to{
+        transform:translateY(-125vh) rotate(7deg);
+    }
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti{
+    position:fixed;
+    top:-20px;
+    width:9px;
+    height:15px;
+    z-index:30;
+    animation:confettiFall linear forwards;
+}
+
+@keyframes confettiFall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:.8;
+    }
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-btn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.2);
+
+    background:rgba(20,10,30,.8);
+    color:#fff;
+
+    font-size:20px;
+    cursor:pointer;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+        0 0 25px rgba(255,79,163,.25);
+
+    z-index:50;
+    transition:.3s;
+}
+
+.music-btn:hover{
+    transform:scale(1.1);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    .container{
+        padding:25px 0;
+    }
+
+    .card{
+        padding:40px 15px;
+        border-radius:25px;
+    }
+
+    .countdown{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .time-box{
+        padding:22px 8px;
+    }
+
+    .wish{
+        padding:22px 18px;
+    }
+
+    .panda-area{
+        transform:scale(.9);
+        margin-bottom:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sparkles -->
+<div id="sparkles"></div>
+
+
+<div class="container">
+
+<div class="card">
+
+<!-- =========================
+     BEFORE BIRTHDAY
+========================= -->
+
+<div class="before" id="before">
+
+    <div class="small-title">
+        A Special Day Is Coming ✨
+    </div>
+
+
+    <!-- PANDA -->
+    <div class="panda-area">
+
+        <div class="panda-glow"></div>
+
+        <div class="panda">
+
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+
+            <div class="head">
+
+                <div class="eye-patch left"></div>
+                <div class="eye-patch right"></div>
+
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+
+                <div class="nose"></div>
+                <div class="mouth"></div>
+
+            </div>
+
+            <div class="body">
+                <div class="belly"></div>
+            </div>
+
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+
+            <div class="cake">
+                <div class="candle"></div>
+                <div class="flame"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <h1>
+        Countdown to
+        <span id="nameBefore">NAME</span>'s Birthday
+    </h1>
+
+    <div class="subtitle">
+        A little surprise is waiting for you...🍫
+    </div>
+
+
+    <!-- COUNTDOWN -->
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <span class="number" id="days">00</span>
+            <span class="label">Days</span>
+        </div>
+
+        <div class="time-box">
+            <span class="number" id="hours">00</span>
+            <span class="label">Hours</span>
+        </div>
+
+        <div class="time-box">
+            <span class="number" id="minutes">00</span>
+            <span class="label">Minutes</span>
+        </div>
+
+        <div class="time-box">
+            <span class="number" id="seconds">00</span>
+            <span class="label">Seconds</span>
+        </div>
+
+    </div>
+
+
+    <!-- WISH -->
+
+    <div class="wish">
+
+        <div class="wish-title">
+            A Little Message 💌
+        </div>
+
+        <p id="wishText">
+            MANY MANY HAPPY BIRTHDAY RETURN OF THEDAY❤️‍🩹
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     BIRTHDAY SCREEN
+========================= -->
+
+<div class="birthday" id="birthday">
+
+    <div class="small-title">
+        Today Is Your Special Day ✨
+    </div>
+
+
+    <!-- PANDA AGAIN -->
+
+    <div class="panda-area">
+
+        <div class="panda-glow"></div>
+
+        <div class="panda">
+
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+
+            <div class="head">
+
+                <div class="eye-patch left"></div>
+                <div class="eye-patch right"></div>
+
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+
+                <div class="nose"></div>
+                <div class="mouth"></div>
+
+            </div>
+
+            <div class="body">
+                <div class="belly"></div>
+            </div>
+
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+
+            <div class="cake">
+                <div class="candle"></div>
+                <div class="flame"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="birthday-title">
+
+        HAPPY<br>
+        BIRTHDAY<br>
+
+        <span id="nameBirthday">
+            NAME
+        </span>!
+
+    </div>
+
+
+    <div class="birthday-sub">
+        Today is all about you. 🎂✨
+    </div>
+
+
+    <div class="wish">
+
+        <div class="wish-title">
+            From The Heart 💌
+        </div>
+
+        <p id="birthdayWish">
+            WRITE YOUR WISH MESSAGE HERE
+        </p>
+
+    </div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- MUSIC BUTTON -->
+
+<button class="music-btn" id="musicBtn">
+    🔇
+</button>
+
+
+<!-- MUSIC FILE -->
+
+<audio id="birthdayMusic" loop>
+    <source src="/Baby_Lullabies_-_Happy_Birthday_Piano_Lullaby_(mp3.pm).mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* =====================================================
+   ✨ EDIT THESE 3 VALUES
+===================================================== */
+
+const BIRTHDAY_DATE = "2026-10-16";
+
+const NAME = "Riyad";
+
+const WISH_MESSAGE =
+"Happy Birthday! 🎂 May Allah bless your life with endless happiness, peace and beautiful moments. May every dream in your heart come true. Always keep smiling and stay blessed. 🫶✨";
+
+
+/* =====================================================
+   SET TEXT
+===================================================== */
+
+document.getElementById("nameBefore").textContent = NAME;
+
+document.getElementById("nameBirthday").textContent = NAME;
+
+document.getElementById("wishText").textContent =
+WISH_MESSAGE;
+
+document.getElementById("birthdayWish").textContent =
+WISH_MESSAGE;
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+const birthdayTime =
+new Date(
+    BIRTHDAY_DATE + "T00:00:00"
+).getTime();
+
+
+const before =
+document.getElementById("before");
+
+const birthday =
+document.getElementById("birthday");
+
+
+function updateCountdown(){
+
+    const now =
+    new Date().getTime();
+
+    const distance =
+    birthdayTime - now;
+
+
+    if(distance <= 0){
+
+        before.classList.add("hidden");
+
+        birthday.classList.add("active");
+
+        startBirthdayEffects();
+
+        return;
+    }
+
+
+    const d =
+    Math.floor(
+        distance /
+        (1000 * 60 * 60 * 24)
+    );
+
+
+    const h =
+    Math.floor(
+        (distance /
+        (1000 * 60 * 60)) % 24
+    );
+
+
+    const m =
+    Math.floor(
+        (distance /
+        (1000 * 60)) % 60
+    );
+
+
+    const s =
+    Math.floor(
+        (distance / 1000) % 60
+    );
+
+
+    document.getElementById("days")
+    .textContent =
+    String(d).padStart(2,"0");
+
+
+    document.getElementById("hours")
+    .textContent =
+    String(h).padStart(2,"0");
+
+
+    document.getElementById("minutes")
+    .textContent =
+    String(m).padStart(2,"0");
+
+
+    document.getElementById("seconds")
+    .textContent =
+    String(s).padStart(2,"0");
+
+}
+
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+
+/* =====================================================
+   SPARKLES
+===================================================== */
+
+const sparkleContainer =
+document.getElementById("sparkles");
+
+
+for(let i=0;i<100;i++){
+
+    const sparkle =
+    document.createElement("div");
+
+    sparkle.className =
+    "sparkle";
+
+
+    sparkle.style.left =
+    Math.random()*100 + "%";
+
+
+    sparkle.style.top =
+    Math.random()*100 + "%";
+
+
+    sparkle.style.animationDelay =
+    Math.random()*3 + "s";
+
+
+    sparkle.style.animationDuration =
+    (2 + Math.random()*4) + "s";
+
+
+    sparkleContainer.appendChild(
+        sparkle
+    );
+}
+
+
+/* =====================================================
+   BALLOONS
+===================================================== */
+
+function createBalloon(){
+
+    const balloon =
+    document.createElement("div");
+
+    balloon.className =
+    "balloon";
+
+
+    const colors = [
+        "#ff4fa3",
+        "#9b5cff",
+        "#ffd166",
+        "#ff72c0",
+        "#8b6cff"
+    ];
+
+
+    const color =
+    colors[
+        Math.floor(
+            Math.random()*colors.length
+        )
+    ];
+
+
+    balloon.style.background =
+    color;
+
+
+    balloon.style.left =
+    Math.random()*100 + "%";
+
+
+    balloon.style.animationDuration =
+    (7 + Math.random()*7) + "s";
+
+
+    document.body.appendChild(
+        balloon
+    );
+
+
+    setTimeout(()=>{
+        balloon.remove();
+    },15000);
+
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function createConfetti(){
+
+    const confetti =
+    document.createElement("div");
+
+    confetti.className =
+    "confetti";
+
+
+    const colors = [
+        "#ff4fa3",
+        "#9b5cff",
+        "#ffd166",
+        "#ffffff"
+    ];
+
+
+    confetti.style.background =
+    colors[
+        Math.floor(
+            Math.random()*colors.length
+        )
+    ];
+
+
+    confetti.style.left =
+    Math.random()*100 + "%";
+
+
+    confetti.style.animationDuration =
+    (3 + Math.random()*4) + "s";
+
+
+    document.body.appendChild(
+        confetti
+    );
+
+
+    setTimeout(()=>{
+        confetti.remove();
+    },7000);
+
+}
+
+
+/* =====================================================
+   BIRTHDAY EFFECTS
+===================================================== */
+
+let effectsStarted = false;
+
+
+function startBirthdayEffects(){
+
+    if(effectsStarted)
+        return;
+
+
+    effectsStarted = true;
+
+
+    /* Balloons */
+
+    for(let i=0;i<20;i++){
+
+        setTimeout(()=>{
+            createBalloon();
+        },i*200);
+
+    }
+
+
+    setInterval(()=>{
+        createBalloon();
+    },1000);
+
+
+    /* Confetti */
+
+    for(let i=0;i<250;i++){
+
+        setTimeout(()=>{
+            createConfetti();
+        },i*15);
+
+    }
+
+
+    setInterval(()=>{
+
+        for(let i=0;i<15;i++){
+            createConfetti();
+        }
+
+    },1200);
+
+
+    /* Music */
+
+    playMusic();
+
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+const music =
+document.getElementById("birthdayMusic");
+
+
+const musicBtn =
+document.getElementById("musicBtn");
+
+
+function playMusic(){
+
+    music.muted = false;
+
+    music.play()
+    .then(()=>{
+
+        musicBtn.textContent =
+        "🔊";
+
+    })
+    .catch(()=>{
+
+        musicBtn.textContent =
+        "🔇";
+
+    });
+
+}
+
+
+musicBtn.addEventListener(
+"click",
+()=>{
+
+    if(music.paused){
+
+        music.muted = false;
+
+        music.play();
+
+        musicBtn.textContent =
+        "🔊";
+
+    }
+
+    else{
+
+        music.muted =
+        !music.muted;
+
+        musicBtn.textContent =
+        music.muted
+        ? "🔇"
+        : "🔊";
+
+    }
+
+});
+
+
+/* =====================================================
+   CHECK BIRTHDAY ON LOAD
+===================================================== */
+
+if(
+    new Date().getTime()
+    >= birthdayTime
+){
+
+    startBirthdayEffects();
+
+}
+
+</script>
+
+</body>
+</html>
